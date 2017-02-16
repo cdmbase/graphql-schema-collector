@@ -1,6 +1,6 @@
 {
-  "name": "@creditkarma/graphql-loader",
-  "version": "0.2.2",
+  "name": "graphql-schema-collector",
+  "version": "0.2.5",
   "description": "Build a GraphQL Schema by loading .graphql files based a glob pattern",
   "main": "./dist/index.js",
   "scripts": {
@@ -9,6 +9,7 @@
     "build:watch": "tsc --watch",
     "lint": "tslint src/**/*",
     "pretest": "npm run build",
+    "typings": "typings install",
     "test": "npm run test:only --",
     "test:watch": "npm test -- -w",
     "test:only": "lab  -c -S ./dist/test",
@@ -17,17 +18,17 @@
   "keywords": [
     "GraphQL"
   ],
-  "author": "Credit Karma",
+  "author": "Cdmbase",
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/code": "^4.0.0",
     "@types/glob": "^5.0.30",
     "@types/lab": "^11.1.0",
     "@types/mkdirp": "^0.3.29",
-    "@types/node": "^6.0.46",
+    "@types/node": "^7.0.5",
     "@types/rimraf": "0.0.28",
     "code": "^4.0.0",
-    "lab": "^11.2.1",
+    "lab": "^12.1.0",
     "mkdirp": "^0.5.1",
     "rimraf": "^2.5.4",
     "tslint": "^4.0.2",
@@ -38,10 +39,18 @@
     "glob": "^7.0.5"
   },
   "peerDependencies": {
-    "graphql": "^0.6.1 || ^0.7.0 || ^0.8.0"
+    "graphql": "^0.8.0 || ^0.9.0"
   },
   "typings": "dist/index.d.ts",
   "typescript": {
     "definition": "dist/index.d.ts"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdmbase/graphql-loader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cdmbase/graphql-loader/issues"
+  },
+  "homepage": "https://github.com/cdmbase/graphql-loader#readme"
 }

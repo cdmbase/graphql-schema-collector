@@ -10,7 +10,7 @@ import * as fs from 'fs'
 import * as graphql from 'graphql'
 import * as mkdirp from 'mkdirp'
 import * as rimraf from 'rimraf'
-import { GraphQLLoaderError, loadSchema } from '../index'
+import { loadSchema } from '../index'
 
 const glob = './fixtures/**/*.graphql'
 const invalidGlob = './error/*.graphql'
@@ -33,7 +33,7 @@ describe('Sync Schema Loader', () => {
   describe(`when loading an invalid glob "${invalidGlob}"`, () => {
     it('expect error to be triggered', (done) => {
       const throws = () => { loadSchema.sync(invalidGlob) }
-      expect( throws ).to.throw(GraphQLLoaderError, invalidGlobPattern)
+      expect( throws ).to.throw(Error, invalidGlobPattern)
       done()
     })
   })
