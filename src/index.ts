@@ -1,25 +1,5 @@
 import * as fs from 'fs'
 import * as glob from 'glob'
-// import { buildASTSchema, GraphQLSchema, parse } from 'graphql'
-
-// export class GraphQLLoaderError extends Error {
-//   public static zeroMatchError(glob: string): GraphQLLoaderError {
-//     return new GraphQLLoaderError(`The glob pattern "${glob}" has zero matches`)
-//   }
-//   constructor(message: string) {
-//     super(message)
-//     this.name = 'GraphQLLoaderError'
-//   }
-// }
-
-// export interface ISchemaCallback {
-//   (err: GraphQLLoaderError, schema: GraphQLSchema)
-// }
-
-// export interface ILoadSchemaFunc {
-//     (pattern: string, callback?: ISchemaCallback): Promise<GraphQLSchema>
-//     sync?: Function
-// }
 
 export interface ISchemaCallback {
   (err: Error, schema: any)
@@ -34,7 +14,6 @@ const loadSchema: ILoadSchemaFunc = (pattern: string, callback?: ISchemaCallback
   return new Promise((resolve, reject) => {
     getGlob(pattern)
       .then((files) => makeSchema(files))
-      .then((schemaFile) => parseSchema(schemaFile))
       .then((schema) => callback ? callback(null, schema) : resolve(schema))
       .catch((err) => callback ? callback(err, null) : reject(err))
   })
@@ -49,11 +28,6 @@ function makeSchema(fileNames: string[]): Promise<string> {
   })
 }
 
-function parseSchema(fileData: string) {
- // const doc = parse(fileData)
-  //return buildASTSchema(doc)
-  return fileData
-}
 
 function getGlob(pattern: string): Promise<string[]> {
   return new Promise((resolve, reject) => {
@@ -82,7 +56,7 @@ function readFile(fileName: string): Promise<string> {
 loadSchema.sync = (pattern: string): any => {
   const fileNames = getGlobSync(pattern)
   const schema = makeSchemaSync(fileNames)
-  return parseSchema(schema)
+  return schema
 }
 
 function getGlobSync(pattern: string) {
