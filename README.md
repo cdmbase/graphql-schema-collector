@@ -1,4 +1,4 @@
-# graphql-loader
+# graphql-schema-collector
 
 Instantiate a GraphQL Schema by loading GraphQL Schema Language files based on a glob pattern
 
