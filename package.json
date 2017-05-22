@@ -1,5 +1,5 @@
 {
-  "name": "graphql-schema-collector",
+  "name": "@cdmbase/graphql-schema-collector",
   "version": "0.3.0",
   "description": "Aggregate Schema module into one Schema by loading .graphql files based a glob pattern",
   "main": "./dist/index.js",
@@ -20,6 +20,9 @@
   ],
   "author": "Cdmbase",
   "license": "Apache-2.0",
+    "publishConfig": {
+    "access": "public"
+  },
   "jest": {
     "testEnvironment": "node",
     "roots": [
